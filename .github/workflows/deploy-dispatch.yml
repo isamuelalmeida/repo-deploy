@@ -1,0 +1,15 @@
+name: Deploy Fake | Repo Remoto Dispatch
+
+on:
+    repository_dispatch:
+        types:
+            - deploy-remoto
+
+jobs:
+    repo-dispatch-deploy-kubernetes:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy no ambiente
+              run: |
+                echo "Executando o deploy no ambiente de ${{ github.event.client_payload.ambiente }}"
+                curl -X POST https://webhook.site/a1eec212-3da8-4a39-92b6-b1313dc1307e -d '{ ambiente: ${{ github.event.client_payload.ambiente }} }'
