@@ -8,7 +8,7 @@ on:
                 default: "dev"
 
 jobs:
-    outro-repo-deploy-kubernetes:
+    repo-remoto-deploy-kubernetes:
         runs-on: ubuntu-latest
         steps:
             - name: Deploy no ambiente
